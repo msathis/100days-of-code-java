@@ -2,4 +2,4 @@
 
 ## Contents
 
-* [Change Logs](logs.md)
+* [Change Logs](log.md)
