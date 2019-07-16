@@ -1,7 +1,5 @@
 package net.sathis;
 
-import org.junit.jupiter.api.Test;
-
 public class Day1 {
 
     private static void hanoi(int i, String left, String right, String aux) {
@@ -12,16 +10,11 @@ public class Day1 {
         }
     }
 
-    private static void hanoi(int i) {
+    public static void hanoi(int i) {
         hanoi(i, "LEFT", "RIGHT", "MIDDLE");
     }
 
     public static void main(String[] args) {
-        hanoi(3);
-    }
-
-    @Test
-    public static void test() {
         hanoi(3);
     }
 }
