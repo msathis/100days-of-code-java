@@ -1,5 +1,7 @@
 package net.sathis;
 
+import java.util.Arrays;
+
 public class Day2 {
 
     public static int getCountRecursive(int[] sizes) {
@@ -24,25 +26,34 @@ public class Day2 {
         return min;
     }
 
-    private static int getCountDP(int[] sizes) {
-        int[][] dp = new int[sizes.length + 1][sizes.length + 1];
+    public static int getCountDP(int[] sizes) {
+        int[][] dp = new int[sizes.length][sizes.length];
 
+        //l denotes Chain length
+        for (int l = 2; l < sizes.length; l++) {
+            //i denotes chain starting position
+            for (int i = 1; i < sizes.length - l + 1; i++) {
 
-        for (int i = 1; i <= sizes.length; i++) {
-            for (int j = 1; j <= sizes.length; j++) {
+                //j is the end index
+                int j = l + i - 1;
+
+                if (j == sizes.length)
+                    continue;
 
                 int min = Integer.MAX_VALUE;
                 for (int k = i; k < j; k++) {
-                    int count = dp[i - 1][k - 1]
-                            + dp[k][j - 1]
-                            + sizes[i - 1] * sizes[k - 1] * sizes[j - 1];
+                    int count = dp[i][k]
+                            + dp[k + 1][j]
+                            + sizes[i - 1] * sizes[k] * sizes[j];
                     min = Math.min(min, count);
                 }
                 dp[i][j] = min;
             }
         }
 
-        return dp[sizes.length][sizes.length];
+        System.out.println(Arrays.deepToString(dp));
+
+        return dp[1][sizes.length - 1];
     }
 
     public static void main(String[] args) {

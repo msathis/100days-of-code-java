@@ -15,4 +15,13 @@ class Day2Test {
         assertEquals(Day2.getCountRecursive(sizes), 26000);
         assertEquals(Day2.getCountRecursive(sizes2), 30000);
     }
+
+    @Test
+    void testDP() {
+        int[] sizes = {40, 20, 30, 10, 30};
+        int[] sizes2 = {10, 20, 30, 40, 30};
+
+        assertEquals(Day2.getCountRecursive(sizes), 26000);
+        assertEquals(Day2.getCountRecursive(sizes2), 30000);
+    }
 }
